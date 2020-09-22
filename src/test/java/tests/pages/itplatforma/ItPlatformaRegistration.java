@@ -7,18 +7,24 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static tests.logger.CustomLogger.logger;
 
-public class ItPlatformaRegestration {
+public class ItPlatformaRegistration {
     SelenideElement buttonSingIn = $(byXpath("//span[@class='text-wrap' and text()='Sign in']"));
-    SelenideElement fieldUser = $(byXpath("//input[@id='email']"));
-    SelenideElement fieldEmail = $(byXpath("//input[@id='email']"));
-    SelenideElement fieldPassword = $(byXpath("//input[@id='password']"));
-    SelenideElement buttonLogin = $(byXpath("//button[@id='submit-button']"));
+    SelenideElement buttonRegistration = $(byXpath("//a[@href='https://it-platforma.website/register/']"));
+    SelenideElement fieldUser = $(byXpath("//input[@name='user_login']"));
+    SelenideElement fieldEmail = $(byXpath("//input[@name='user_email']"));
+    SelenideElement fieldPassword = $(byXpath("//input[@name='user_pass1']"));
+    SelenideElement fieldPassword2 = $(byXpath("//input[@name='user_pass2']"));
+    SelenideElement buttonRegistration2 = $(byXpath("//button[@class='tml-button']"));
 
+    @Step
+    public void pressButtonRegistration() {
+        buttonRegistration.click();
+        logger.info("ok");
+    }
     @Step
     public void pressButtonSingIn() {
         buttonSingIn.click();
         logger.info("ok");
-
     }
     @Step
     public void fillTheFieldUser(String user) {
@@ -36,10 +42,14 @@ public class ItPlatformaRegestration {
         fieldPassword.sendKeys(password);
         logger.info("ok");
     }
-
     @Step
-    public void pressButtonLogin() {
-        buttonLogin.click();
+    public void fillTheFieldPassword2(String password) {
+        fieldPassword2.sendKeys(password);
+        logger.info("ok");
+    }
+    @Step
+    public void pressbuttonRegistration2() {
+        buttonRegistration2.click();
         logger.info("ok");
     }
 
