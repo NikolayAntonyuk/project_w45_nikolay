@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Project Test1" verbose="1">
+    <listeners>
+        <listener class-name="tests.listeners.CustomListener"/>
+        <listener class-name="tests.listeners.RetryListener"/>
+    </listeners>
+    <test name="Google">
+        <packages>
+            <package name="tests.ui_tests"/>
+        </packages>
+        <classes>
+            <class name="tests.ui_tests.google.GoogleTests">
+                <methods>
+                    <include name="checkGoogleSearch"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
