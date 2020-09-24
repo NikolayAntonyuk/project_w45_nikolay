@@ -3,7 +3,6 @@ package tests.pages.itplatforma;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static tests.common.CommonSteps.getAndAttachScreenshot;

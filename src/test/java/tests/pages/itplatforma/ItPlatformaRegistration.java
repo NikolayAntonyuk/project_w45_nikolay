@@ -3,7 +3,6 @@ package tests.pages.itplatforma;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static tests.common.CommonSteps.getAndAttachScreenshot;
@@ -23,6 +22,7 @@ public class ItPlatformaRegistration {
     SelenideElement checkErrorMessege4 = $(byXpath("//li[text()=': Это имя пользователя уже зарегистрировано. Пожалуйста, выберите другое.']"));
     SelenideElement checkErrorMessege5 = $(byXpath("//li[text()=': Этот email уже зарегистрирован. Пожалуйста, введите другой.']"));
     SelenideElement checkErrorMessege6 = $(byXpath("//li[text()=': Please enter a password.']"));
+    SelenideElement checkErrorMessege7 = $(byXpath("//li[text()=': Некорректный адрес email.']"));
 
     @Step
     public void pressButtonRegistration() {
@@ -105,6 +105,12 @@ public class ItPlatformaRegistration {
     @Step
     public void checkErrorMessage6() {
         checkErrorMessege6.shouldBe(Condition.visible);
+        getAndAttachScreenshot();
+        logger.info("ok");
+    }
+    @Step
+    public void checkErrorMessage7() {
+        checkErrorMessege7.shouldBe(Condition.visible);
         getAndAttachScreenshot();
         logger.info("ok");
     }
