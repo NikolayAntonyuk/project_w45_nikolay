@@ -9,7 +9,7 @@
             <package name="tests.ui_tests"/>
         </packages>
         <classes>
-            <class name="tests.ui_tests.google.GoogleTests">
+            <class name="tests.ui_tests.itplatforma.ItPlatformaTests">
                 <methods>
                     <include name="checkGoogleSearch"/>
                 </methods>

@@ -1,8 +1,10 @@
 package tests.data;
 
-public enum ItPlatformaUser{
-    USER ("Test"),
-    EMAIL("Email@gmail.com"),
+public enum ItPlatformaUser {
+    USER("Test3"),
+    USER2("Test4"),
+    EMAIL("Email3@gmail.com"),
+    EMAIL2("Email4@gmail.com"),
     PASSWORD("TestTest");
 
     private final String value;

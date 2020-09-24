@@ -7,10 +7,27 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static tests.logger.CustomLogger.logger;
 
-public class ItPlatformaAutorization {
-    SelenideElement fieldEmail = $(byXpath("//input[@id='email']"));
-    SelenideElement fieldPassword = $(byXpath("//input[@id='password']"));
-    SelenideElement buttonLogin = $(byXpath("//button[@id='submit-button']"));
+public class ItPlatformaAuthorization {
+    SelenideElement buttonSingIn = $(byXpath("//span[@class='text-wrap' and text()='Sign in']"));
+    SelenideElement fieldUser = $(byXpath("//input[@id='user_login']"));
+    SelenideElement fieldEmail = $(byXpath("//input[@id='user_login']"));
+    SelenideElement fieldPassword = $(byXpath("//input[@id='user_pass']"));
+    SelenideElement buttonLogin = $(byXpath("//button[@class='tml-button']"));
+
+
+
+
+    @Step
+    public void pressButtonSingIn() {
+        buttonSingIn.click();
+        logger.info("ok");
+    }
+
+    @Step
+    public void fillTheFieldUser(String user) {
+        fieldUser.sendKeys(user);
+        logger.info(user + " - ok");
+    }
 
     @Step
     public void fillTheFieldEmail(String email) {
@@ -29,6 +46,7 @@ public class ItPlatformaAutorization {
         buttonLogin.click();
         logger.info("ok");
     }
+
 
 }
 

@@ -20,6 +20,7 @@ public class Debug {
         driver.get(baseUrl);
         driver.manage().window().maximize();
     }
+
     @Test
     public void test23() throws InterruptedException {
         logger.info(driver.getCurrentUrl());
