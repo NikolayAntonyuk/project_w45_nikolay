@@ -28,7 +28,7 @@ public class ItPlatformaTests extends Debug {
         ItPlatformaRegistration.fillTheFieldPassword2(ItPlatformaUser.PASSWORD.getValue());
         ItPlatformaRegistration.pressbuttonRegistration2();
         ItPlatformaMainPage.checkProfileName();
-        //ItPlatformaMainPage.pressButtonSingOut("Выйти");
+        ItPlatformaMainPage.pressButtonSingOut();
     }
 
     @Test(priority = 2)
@@ -37,38 +37,38 @@ public class ItPlatformaTests extends Debug {
         ItPlatformaRegistration.pressButtonSingIn();
         ItPlatformaRegistration.pressButtonRegistration();
         ItPlatformaRegistration.pressbuttonRegistration2();
-        ItPlatformaRegistration.checkErrorMessage1();
-        ItPlatformaRegistration.checkErrorMessage2();
-        ItPlatformaRegistration.checkErrorMessage3();
+        ItPlatformaRegistration.checkErrorMessage(": Пожалуйста, введите имя пользователя.");
+        ItPlatformaRegistration.checkErrorMessage(": Пожалуйста, введите ваш адрес email.");
+        ItPlatformaRegistration.checkErrorMessage(": Please enter a password.");
         ItPlatformaRegistration.fillTheFieldUser(ItPlatformaUser.USER.getValue());
         ItPlatformaRegistration.pressbuttonRegistration2();
-        ItPlatformaRegistration.checkErrorMessage2();
-        ItPlatformaRegistration.checkErrorMessage3();
-        ItPlatformaRegistration.checkErrorMessage4();
+        ItPlatformaRegistration.checkErrorMessage(": Пожалуйста, введите ваш адрес email.");
+        ItPlatformaRegistration.checkErrorMessage(": Please enter a password.");
+        ItPlatformaRegistration.checkErrorMessage(": Это имя пользователя уже зарегистрировано. Пожалуйста, выберите другое.");
         ItPlatformaRegistration.fillTheFieldUser(Keys.chord((Keys.CONTROL + "a") + Keys.DELETE));
         ItPlatformaRegistration.fillTheFieldUser(ItPlatformaUser.USER2.getValue());
         ItPlatformaRegistration.pressbuttonRegistration2();
-        ItPlatformaRegistration.checkErrorMessage2();
-        ItPlatformaRegistration.checkErrorMessage3();
+        ItPlatformaRegistration.checkErrorMessage(": Пожалуйста, введите ваш адрес email.");
+        ItPlatformaRegistration.checkErrorMessage(": Please enter a password.");
         ItPlatformaRegistration.fillTheFieldEmail(ItPlatformaUser.EMAIL.getValue());
         ItPlatformaRegistration.pressbuttonRegistration2();
-        ItPlatformaRegistration.checkErrorMessage3();
-        ItPlatformaRegistration.checkErrorMessage5();
+        ItPlatformaRegistration.checkErrorMessage(": Please enter a password.");
+        ItPlatformaRegistration.checkErrorMessage(": Этот email уже зарегистрирован. Пожалуйста, введите другой.");
         ItPlatformaRegistration.fillTheFieldEmail(ItPlatformaUser.EMAIL2.getValue());
         ItPlatformaRegistration.pressbuttonRegistration2();
-        ItPlatformaRegistration.checkErrorMessage7();
-        ItPlatformaRegistration.checkErrorMessage3();
+        ItPlatformaRegistration.checkErrorMessage(": Некорректный адрес email.");
+        ItPlatformaRegistration.checkErrorMessage(": Please enter a password.");
         ItPlatformaRegistration.fillTheFieldEmail(Keys.chord((Keys.CONTROL + "a") + Keys.DELETE));
         ItPlatformaRegistration.fillTheFieldEmail(ItPlatformaUser.EMAIL2.getValue());
         ItPlatformaRegistration.pressbuttonRegistration2();
-        ItPlatformaRegistration.checkErrorMessage3();
+        ItPlatformaRegistration.checkErrorMessage(": Please enter a password.");
         ItPlatformaRegistration.fillTheFieldPassword(ItPlatformaUser.PASSWORD.getValue());
         ItPlatformaRegistration.pressbuttonRegistration2();
-        ItPlatformaRegistration.checkErrorMessage6();
+        ItPlatformaRegistration.checkErrorMessage(": Please enter a password.");
         ItPlatformaRegistration.fillTheFieldPassword2(ItPlatformaUser.PASSWORD.getValue());
         ItPlatformaRegistration.pressbuttonRegistration2();
         ItPlatformaMainPage.checkProfileName();
-        //ItPlatformaMainPage.pressButtonSingOut("Выйти");
+        ItPlatformaMainPage.pressButtonSingOut();
     }
 
     @Test(priority = 3)
@@ -79,74 +79,86 @@ public class ItPlatformaTests extends Debug {
         ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.PASSWORD.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
         ItPlatformaMainPage.checkProfileName();
-        // ItPlatformaMainPage.pressButtonSingOut("Выйти");
+        ItPlatformaMainPage.muvetoElement();
+        ItPlatformaMainPage.pressButtonSingOut();
     }
+
     @Test(priority = 4)
     public void checkValidAuthorization() {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaAuthorization.pressButtonSingIn();
         ItPlatformaAuthorization.pressButtonLogin();
-        ItPlatformaAuthorization.checkErrorMessage1();
-        ItPlatformaAuthorization.checkErrorMessage2();
+        ItPlatformaAuthorization.checkErrorMessage(": Вы не ввели имя пользователя.");
+        ItPlatformaAuthorization.checkErrorMessage(": Вы не ввели пароль.");
         ItPlatformaAuthorization.fillTheFieldUser(ItPlatformaUser.USER.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
-        ItPlatformaAuthorization.checkErrorMessage2();
+        ItPlatformaAuthorization.checkErrorMessage(": Вы не ввели пароль.");
         ItPlatformaAuthorization.fillTheFieldUser(ItPlatformaUser.USER.getValue());
         ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.PASSWORD.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
-        ItPlatformaAuthorization.checkErrorMessage3();
+        ItPlatformaAuthorization.checkErrorMessage("Неизвестное имя пользователя. Перепроверьте или попробуйте ваш адрес email.");
         ItPlatformaAuthorization.fillTheFieldUser(Keys.chord((Keys.CONTROL + "a") + Keys.DELETE));
         ItPlatformaAuthorization.fillTheFieldPassword(Keys.chord((Keys.CONTROL + "a") + Keys.DELETE));
         ItPlatformaAuthorization.fillTheFieldUser(ItPlatformaUser.EMAIL.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
-        ItPlatformaAuthorization.checkErrorMessage2();
+        ItPlatformaAuthorization.checkErrorMessage(": Вы не ввели пароль.");
         ItPlatformaAuthorization.fillTheFieldUser(Keys.chord((Keys.CONTROL + "a") + Keys.DELETE));
         ItPlatformaAuthorization.fillTheFieldPassword(Keys.chord((Keys.CONTROL + "a") + Keys.DELETE));
         ItPlatformaAuthorization.fillTheFieldUser(ItPlatformaUser.USER.getValue());
         ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.PASSWORD2.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
-        ItPlatformaAuthorization.checkErrorMessage4();
+        ItPlatformaAuthorization.checkErrorMessage1("Забыли пароль?");
         ItPlatformaAuthorization.fillTheFieldUser(Keys.chord((Keys.CONTROL + "a") + Keys.DELETE));
         ItPlatformaAuthorization.fillTheFieldPassword(Keys.chord((Keys.CONTROL + "a") + Keys.DELETE));
         ItPlatformaAuthorization.fillTheFieldUser(ItPlatformaUser.EMAIL.getValue());
         ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.PASSWORD.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
         ItPlatformaMainPage.checkProfileName();
-        // ItPlatformaMainPage.pressButtonSingOut("Выйти");
+        ItPlatformaMainPage.pressButtonSingOut();
     }
+
     @Test(priority = 5)
     public void checkValidAuthorizationRememberMe() {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaAuthorization.pressButtonSingIn();
         ItPlatformaAuthorization.setCheckBoxRememberMe();
         ItPlatformaAuthorization.pressButtonLogin();
-        ItPlatformaAuthorization.checkErrorMessage1();
-        ItPlatformaAuthorization.checkErrorMessage2();
+        ItPlatformaAuthorization.checkErrorMessage(": Вы не ввели имя пользователя.");
+        ItPlatformaAuthorization.checkErrorMessage(": Вы не ввели пароль.");
         ItPlatformaAuthorization.fillTheFieldUser(ItPlatformaUser.USER.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
-        ItPlatformaAuthorization.checkErrorMessage2();
+        ItPlatformaAuthorization.checkErrorMessage(": Вы не ввели пароль.");
         ItPlatformaAuthorization.fillTheFieldUser(ItPlatformaUser.USER.getValue());
         ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.PASSWORD.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
-        ItPlatformaAuthorization.checkErrorMessage3();
+        ItPlatformaAuthorization.checkErrorMessage("Неизвестное имя пользователя. Перепроверьте или попробуйте ваш адрес email.");
         ItPlatformaAuthorization.fillTheFieldUser(Keys.chord((Keys.CONTROL + "a") + Keys.DELETE));
         ItPlatformaAuthorization.fillTheFieldPassword(Keys.chord((Keys.CONTROL + "a") + Keys.DELETE));
         ItPlatformaAuthorization.fillTheFieldUser(ItPlatformaUser.EMAIL.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
-        ItPlatformaAuthorization.checkErrorMessage2();
+        ItPlatformaAuthorization.checkErrorMessage(": Вы не ввели пароль.");
         ItPlatformaAuthorization.fillTheFieldUser(Keys.chord((Keys.CONTROL + "a") + Keys.DELETE));
         ItPlatformaAuthorization.fillTheFieldPassword(Keys.chord((Keys.CONTROL + "a") + Keys.DELETE));
         ItPlatformaAuthorization.fillTheFieldUser(ItPlatformaUser.USER.getValue());
         ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.PASSWORD2.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
-        ItPlatformaAuthorization.checkErrorMessage4();
+        ItPlatformaAuthorization.checkErrorMessage1("Забыли пароль?");
         ItPlatformaAuthorization.fillTheFieldUser(Keys.chord((Keys.CONTROL + "a") + Keys.DELETE));
         ItPlatformaAuthorization.fillTheFieldPassword(Keys.chord((Keys.CONTROL + "a") + Keys.DELETE));
         ItPlatformaAuthorization.fillTheFieldUser(ItPlatformaUser.EMAIL.getValue());
         ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.PASSWORD.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
         ItPlatformaMainPage.checkProfileName();
-        // ItPlatformaMainPage.pressButtonSingOut("Выйти");
+        ItPlatformaMainPage.pressButtonSingOut();
+    }
+
+    @Test(priority = 6)
+    public void checkMainPageBrokenlinks() {
+        open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
+        ItPlatformaMainPage.pressButtonHeader("Sign");
+        ItPlatformaMainPage.pressButtonHeader("Pricing");
+        ItPlatformaMainPage.pressButtonSingOut();
+
     }
 
 }

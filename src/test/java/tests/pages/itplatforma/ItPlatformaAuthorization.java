@@ -14,10 +14,8 @@ public class ItPlatformaAuthorization {
     SelenideElement fieldEmail = $(byXpath("//input[@id='user_login']"));
     SelenideElement fieldPassword = $(byXpath("//input[@id='user_pass']"));
     SelenideElement buttonLogin = $(byXpath("//button[@class='tml-button']"));
-    SelenideElement checkErrorMessege1 = $(byXpath("//li[text()=': Вы не ввели имя пользователя.']"));
-    SelenideElement checkErrorMessege2 = $(byXpath("//li[text()=': Вы не ввели пароль.']"));
-    SelenideElement checkErrorMessege3 = $(byXpath("//li[text()='Неизвестное имя пользователя. Перепроверьте или попробуйте ваш адрес email.']"));
-    SelenideElement checkErrorMessege4 = $(byXpath("//li[@class='tml-error']/a[text()='Забыли пароль?']"));
+    String  checkErrorMessege = "//li";
+    String checkErrorMessege1 = "//li[@class='tml-error']/a";
     SelenideElement checkBoxRememberMe = $(byXpath("//input[@id='rememberme']"));
 
 
@@ -52,28 +50,17 @@ public class ItPlatformaAuthorization {
     }
 
     @Step
-    public void checkErrorMessage1() {
-        checkErrorMessege1.shouldBe(Condition.visible);
-        logger.info("ok");
+    public void checkErrorMessage(String errorText) {
+        $(byXpath(checkErrorMessege + "[text()='" + errorText + "']")).shouldBe(Condition.visible);
+        logger.info(errorText + "ok");
     }
 
     @Step
-    public void checkErrorMessage2() {
-        checkErrorMessege2.shouldBe(Condition.visible);
-        logger.info("ok");
+    public void checkErrorMessage1(String errorText) {
+        $(byXpath(checkErrorMessege1 + "[text()='" + errorText + "']")).shouldBe(Condition.visible);
+        logger.info(errorText + "ok");
     }
 
-    @Step
-    public void checkErrorMessage3() {
-        checkErrorMessege3.shouldBe(Condition.visible);
-        logger.info("ok");
-    }
-
-    @Step
-    public void checkErrorMessage4() {
-        checkErrorMessege4.shouldBe(Condition.visible);
-        logger.info("ok");
-    }
     @Step
     public void setCheckBoxRememberMe() {
         checkBoxRememberMe.click();
