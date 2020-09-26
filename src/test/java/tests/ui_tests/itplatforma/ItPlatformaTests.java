@@ -79,7 +79,6 @@ public class ItPlatformaTests extends Debug {
         ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.PASSWORD.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
         ItPlatformaMainPage.checkProfileName();
-        ItPlatformaMainPage.muvetoElement();
         ItPlatformaMainPage.pressButtonSingOut();
     }
 
@@ -155,9 +154,16 @@ public class ItPlatformaTests extends Debug {
     @Test(priority = 6)
     public void checkMainPageBrokenlinks() {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
-        ItPlatformaMainPage.pressButtonHeader("Sign");
+        ItPlatformaMainPage.pressButtonHeader("Sign in");
+        ItPlatformaMainPage.checkLoginPage("Войти");
         ItPlatformaMainPage.pressButtonHeader("Pricing");
-        ItPlatformaMainPage.pressButtonSingOut();
+        ItPlatformaMainPage.checkPricingPage();
+        open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
+        ItPlatformaMainPage.pressButtonHeader("Choose your pack");
+        ItPlatformaMainPage.checkChooseYourPackPage();
+
+
+        //ItPlatformaMainPage.pressButtonSingOut();
 
     }
 
