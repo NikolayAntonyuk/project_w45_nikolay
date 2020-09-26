@@ -28,7 +28,8 @@ public class ItPlatformaTests extends Debug {
         ItPlatformaRegistration.fillTheFieldPassword2(ItPlatformaUser.PASSWORD.getValue());
         ItPlatformaRegistration.pressbuttonRegistration2();
         ItPlatformaMainPage.checkProfileName();
-        ItPlatformaMainPage.pressButtonSingOut();
+        ItPlatformaMainPage.sellectElements();
+        ItPlatformaMainPage.pressButtonSingOut("Выйти");
     }
 
     @Test(priority = 2)
@@ -68,7 +69,8 @@ public class ItPlatformaTests extends Debug {
         ItPlatformaRegistration.fillTheFieldPassword2(ItPlatformaUser.PASSWORD.getValue());
         ItPlatformaRegistration.pressbuttonRegistration2();
         ItPlatformaMainPage.checkProfileName();
-        ItPlatformaMainPage.pressButtonSingOut();
+        ItPlatformaMainPage.sellectElements();
+        ItPlatformaMainPage.pressButtonSingOut("Выйти");
     }
 
     @Test(priority = 3)
@@ -79,7 +81,8 @@ public class ItPlatformaTests extends Debug {
         ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.PASSWORD.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
         ItPlatformaMainPage.checkProfileName();
-        ItPlatformaMainPage.pressButtonSingOut();
+        ItPlatformaMainPage.sellectElements();
+        ItPlatformaMainPage.pressButtonSingOut("Выйти");
     }
 
     @Test(priority = 4)
@@ -113,7 +116,8 @@ public class ItPlatformaTests extends Debug {
         ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.PASSWORD.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
         ItPlatformaMainPage.checkProfileName();
-        ItPlatformaMainPage.pressButtonSingOut();
+        ItPlatformaMainPage.sellectElements();
+        ItPlatformaMainPage.pressButtonSingOut("Выйти");
     }
 
     @Test(priority = 5)
@@ -148,7 +152,8 @@ public class ItPlatformaTests extends Debug {
         ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.PASSWORD.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
         ItPlatformaMainPage.checkProfileName();
-        ItPlatformaMainPage.pressButtonSingOut();
+        ItPlatformaMainPage.sellectElements();
+        ItPlatformaMainPage.pressButtonSingOut("Выйти");
     }
 
     @Test(priority = 6)
@@ -161,9 +166,45 @@ public class ItPlatformaTests extends Debug {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaMainPage.pressButtonHeader("Choose your pack");
         ItPlatformaMainPage.checkChooseYourPackPage();
+        open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
+        ItPlatformaMainPage.pressButtonHeader("Achieve your goal");
+        ItPlatformaMainPage.checkAchieveYourGoalPage();
+        open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
+        ItPlatformaMainPage.pressButtonHeader("Your Objective");
+        ItPlatformaMainPage.checkYourObjectivePage();
+        open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
+        ItPlatformaMainPage.pressNewesPage("Neque adipiscing an cursus");
+        ItPlatformaMainPage.checkOpendNewesPage1();
+        open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
+        ItPlatformaMainPage.pressNewesPage("Litora torqent per conubia");
+        ItPlatformaMainPage.checkOpendNewesPage2();
+        open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
+        ItPlatformaMainPage.pressNewesPage("Praesent libro se cursus ante");
+        ItPlatformaMainPage.checkOpendNewesPage3();
+        open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
+        ItPlatformaMainPage.pressPageNumbers2();
+        ItPlatformaMainPage.checkPageNumbers2();
+        ItPlatformaMainPage.pressNewesPage("Metus vitae pharetra auctor");
+        ItPlatformaMainPage.checkOpendNewesPage4();
+        open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
+        ItPlatformaMainPage.pressPageNumbers2();
+        ItPlatformaMainPage.pressNewesPage("Interdum magna augue eget");
+        ItPlatformaMainPage.checkOpendNewesPage5();
+        open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
+        ItPlatformaMainPage.pressPageNumbers2();
+        ItPlatformaMainPage.pressNewesPage("Torquent per conubia nostra");
+        ItPlatformaMainPage.checkOpendNewesPage6();
+    }
+
+    @Test(priority = 7)
+    public void checkMainPageTheSearch() {
+        open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
+        ItPlatformaMainPage.fillTheSearch();
 
 
-        //ItPlatformaMainPage.pressButtonSingOut();
+
+        }
+
 
     }
 

@@ -11,67 +11,150 @@ import static tests.common.CommonSteps.getAndAttachScreenshot;
 import static tests.logger.CustomLogger.logger;
 
 public class ItPlatformaMainPage {
-    SelenideElement profileOut = $(byXpath("//ul[@class='tml-dashboard-links']/child::li/a[text()='Выйти']"));
+
     SelenideElement profileName = $(byXpath("//img[@class='avatar avatar-26 photo']"));
     String buttonXPath = "//span[@class='text-wrap' ";
     String checkLoginPage = "//h1[@class='page-header-title clr' and ";
-    SelenideElement PricingPage = $(byXpath("//div[@id='breadCrumbs']"));
-    SelenideElement ChooseYourPac = $(byXpath("//div[@id='breadCrumbs']"));
-    //SelenideElement profileOut = $(byXpath(" //div[@class='ab-sub-wrapper']/ul/li/a[text()='Выйти']"));
+    SelenideElement FiveElement = $(byXpath("//div[@class='mWidth topMenu']"));
+    String pressNewesPage = "//a[@ ";
+    SelenideElement Blog = $(byXpath("//h2[@class='single-post-title entry-title']"));
+    SelenideElement sellectElementsProfile = $(byXpath("  //li[@id='wp-admin-bar-my-account']"));
     String buttonSingOut = "//a[@class='ab-item'";
-
+    SelenideElement pressPageNumbers2 = $(byXpath("//a[@class=''page-numbers']"));
+    SelenideElement fieldSearch = $(byXpath("//input[@id=\"ocean-search-form-1\"]"));
 
     @Step
-    public void pressButtonSingOut() {
-        profileOut.click();
+    public void sellectElements() {
+        sellectElementsProfile.hover();
         logger.info("ok");
+
     }
+
+    @Step
+    public void pressButtonSingOut(String buttonText) {
+        $(byXpath(buttonSingOut + "and text()='" + buttonText + "']")).click();
+        getAndAttachScreenshot();
+        logger.info(buttonText + " - ok");
+    }
+
     @Step
     public void checkProfileName() {
         profileName.shouldBe(Condition.visible);
         getAndAttachScreenshot();
         logger.info("ok");
     }
+
     @Step
     public void pressButtonHeader(String buttonText) {
         $(byXpath(buttonXPath + "and contains(text(),'" + buttonText + "')]")).click();
         logger.info(buttonText + " - ok");
     }
+
     @Step
     public void checkLoginPage(String PageText) {
         $(byXpath(checkLoginPage + "text()='" + PageText + "']")).shouldBe(Condition.visible);
         getAndAttachScreenshot();
-        logger.info(PageText + "ok");
+        logger.info(PageText + " - ok");
     }
+
     @Step
     public void checkPricingPage() {
         checkUrl("klubnye-karty");
-        PricingPage.shouldBe(Condition.visible);
+        FiveElement.shouldBe(Condition.visible);
         getAndAttachScreenshot();
         logger.info("ok");
     }
+
     @Step
     public void checkChooseYourPackPage() {
         checkUrl("shedule");
-        ChooseYourPac.shouldBe(Condition.visible);
+        FiveElement.shouldBe(Condition.visible);
         getAndAttachScreenshot();
         logger.info("ok");
     }
 
     @Step
-    public void clickSingOut(String buttonText) {
-        $(byXpath(buttonSingOut + "and text()='" + buttonText + "']")).click();
-        getAndAttachScreenshot();
-        logger.info(buttonText + " - ok");
-    }
-
-
-
-    @Step
-    public void checkROOT() {
-        profileName.shouldBe(Condition.visible);
+    public void checkAchieveYourGoalPage() {
+        checkUrl("special_offer");
+        FiveElement.shouldBe(Condition.visible);
         getAndAttachScreenshot();
         logger.info("ok");
+    }
+
+    @Step
+    public void checkYourObjectivePage() {
+        checkUrl("5element.ua");
+        FiveElement.shouldBe(Condition.visible);
+        getAndAttachScreenshot();
+        logger.info("ok");
+    }
+
+    @Step
+    public void pressNewesPage(String PageText) {
+        $(byXpath(pressNewesPage + "title='" + PageText + "']")).click();
+        getAndAttachScreenshot();
+        logger.info(PageText + " - ok");
+    }
+
+    @Step
+    public void checkOpendNewesPage1() {
+        checkUrl("neque-adipiscing-an-cursus");
+        Blog.shouldBe(Condition.visible);
+        getAndAttachScreenshot();
+        logger.info("ok");
+    }
+
+    @Step
+    public void checkOpendNewesPage2() {
+        checkUrl("litora-torqent-per-conubia");
+        Blog.shouldBe(Condition.visible);
+        getAndAttachScreenshot();
+        logger.info("ok");
+    }
+
+    @Step
+    public void checkOpendNewesPage3() {
+        checkUrl("praesent-libro-se-cursus-ante");
+        Blog.shouldBe(Condition.visible);
+        getAndAttachScreenshot();
+        logger.info("ok");
+    }
+    @Step
+    public void checkOpendNewesPage4() {
+        checkUrl("metus-vitae-pharetra-auctor");
+        Blog.shouldBe(Condition.visible);
+        getAndAttachScreenshot();
+        logger.info("ok");
+    }
+    @Step
+    public void checkOpendNewesPage5() {
+        checkUrl("interdum-magna-augue-eget");
+        Blog.shouldBe(Condition.visible);
+        getAndAttachScreenshot();
+        logger.info("ok");
+    }
+    public void checkOpendNewesPage6() {
+        checkUrl("torquent-per-conubia-nostra");
+        Blog.shouldBe(Condition.visible);
+        getAndAttachScreenshot();
+        logger.info("ok");
+    }
+    @Step
+    public void pressPageNumbers2() {
+        pressPageNumbers2.click();
+        logger.info("ok");
+    }
+    @Step
+    public void checkPageNumbers2() {
+        checkUrl("page/2/");
+        Blog.shouldBe(Condition.visible);
+        getAndAttachScreenshot();
+        logger.info("ok");
+    }
+    @Step
+    public void fillTheSearch(String search) {
+        fieldSearch.sendKeys(search);
+        logger.info(search + " - ok");
     }
 
 
