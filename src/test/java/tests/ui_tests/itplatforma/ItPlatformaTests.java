@@ -183,29 +183,26 @@ public class ItPlatformaTests extends Debug {
         ItPlatformaMainPage.checkOpendNewesPage3();
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaMainPage.pressPageNumbers2();
-        ItPlatformaMainPage.checkPageNumbers2();
-        ItPlatformaMainPage.pressNewesPage("Metus vitae pharetra auctor");
-        ItPlatformaMainPage.checkOpendNewesPage4();
-        open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
-        ItPlatformaMainPage.pressPageNumbers2();
-        ItPlatformaMainPage.pressNewesPage("Interdum magna augue eget");
-        ItPlatformaMainPage.checkOpendNewesPage5();
-        open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
-        ItPlatformaMainPage.pressPageNumbers2();
-        ItPlatformaMainPage.pressNewesPage("Torquent per conubia nostra");
-        ItPlatformaMainPage.checkOpendNewesPage6();
-    }
-
-    @Test(priority = 7)
-    public void checkMainPageTheSearch() {
-        open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
-        ItPlatformaMainPage.fillTheSearch();
-
-
-
-        }
-
+        ItPlatformaMainPage.checkPageNumbers2("Metus vitae pharetra auctor");
 
     }
+    @DataProvider
+    public Object[][] testObjArray() {
+        return ExcelUtils.getTableArray("src//test//resources//TestData.xlsx", "Sheet1");
+    }
+
+    @Test(priority = 7, dataProvider = "testObjArray1")
+    public void checkMainPageTheSearch(String search1, String search2) {
+        open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
+        ItPlatformaMainPage.fieldSearch( search1 + search2);
+        ItPlatformaMainPage.fieldSearch(Keys.chord(Keys.ENTER));
+        ItPlatformaMainPage.resultSearch();
+
+
+     //   System.out.println("var1: " + var1);
+      //  System.out.println("var2: " + var2);
+    }
+
+
 
 }

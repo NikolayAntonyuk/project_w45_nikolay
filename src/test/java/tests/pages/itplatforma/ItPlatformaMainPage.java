@@ -20,8 +20,9 @@ public class ItPlatformaMainPage {
     SelenideElement Blog = $(byXpath("//h2[@class='single-post-title entry-title']"));
     SelenideElement sellectElementsProfile = $(byXpath("  //li[@id='wp-admin-bar-my-account']"));
     String buttonSingOut = "//a[@class='ab-item'";
-    SelenideElement pressPageNumbers2 = $(byXpath("//a[@class=''page-numbers']"));
-    SelenideElement fieldSearch = $(byXpath("//input[@id=\"ocean-search-form-1\"]"));
+    SelenideElement pressPageNumbers2 = $(byXpath("//a[@class='page-numbers']"));
+    SelenideElement fieldSearch = $(byXpath("//input[@id='ocean-search-form-1']"));
+    SelenideElement resultSearch = $(byXpath("//span[@class='breadcrumb-search']"));
 
     @Step
     public void sellectElements() {
@@ -145,17 +146,23 @@ public class ItPlatformaMainPage {
         logger.info("ok");
     }
     @Step
-    public void checkPageNumbers2() {
-        checkUrl("page/2/");
-        Blog.shouldBe(Condition.visible);
+    public void checkPageNumbers2(String PageText) {
+        $(byXpath(pressNewesPage + "title='" + PageText + "']")).shouldBe(Condition.visible);
+        getAndAttachScreenshot();
+        logger.info(PageText + " - ok");
+    }
+    @Step
+    public void fieldSearch(String searchText) {
+        fieldSearch.sendKeys(searchText);
+        logger.info(searchText + " - ok");
+    }
+    @Step
+    public void resultSearch() {
+        resultSearch.shouldBe(Condition.visible);
         getAndAttachScreenshot();
         logger.info("ok");
     }
-    @Step
-    public void fillTheSearch(String search) {
-        fieldSearch.sendKeys(search);
-        logger.info(search + " - ok");
-    }
+
 
 
 

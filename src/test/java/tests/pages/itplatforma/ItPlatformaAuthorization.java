@@ -11,7 +11,6 @@ import static tests.logger.CustomLogger.logger;
 public class ItPlatformaAuthorization {
     SelenideElement buttonSingIn = $(byXpath("//span[@class='text-wrap' and text()='Sign in']"));
     SelenideElement fieldUser = $(byXpath("//input[@id='user_login']"));
-    SelenideElement fieldEmail = $(byXpath("//input[@id='user_login']"));
     SelenideElement fieldPassword = $(byXpath("//input[@id='user_pass']"));
     SelenideElement buttonLogin = $(byXpath("//button[@class='tml-button']"));
     String  checkErrorMessege = "//li";
@@ -30,13 +29,6 @@ public class ItPlatformaAuthorization {
         fieldUser.sendKeys(user);
         logger.info(user + " - ok");
     }
-
-    @Step
-    public void fillTheFieldEmail(String email) {
-        fieldEmail.sendKeys(email);
-        logger.info(email + " - ok");
-    }
-
     @Step
     public void fillTheFieldPassword(String password) {
         fieldPassword.sendKeys(password);
