@@ -4,14 +4,28 @@
         <listener class-name="tests.listeners.CustomListener"/>
         <listener class-name="tests.listeners.RetryListener"/>
     </listeners>
-    <test name="Google">
+    <parameter name="browserName" value="Firefox"/>
+    <test name="test.ItPlayforma1">
         <packages>
             <package name="tests.ui_tests"/>
         </packages>
         <classes>
-            <class name="tests.ui_tests.itplatforma.ItPlatformaTests">
+            <class name="tests.ui_tests.ItPlatformaTests">
                 <methods>
-                    <include name="checkGoogleSearch"/>
+                    <include name="checkValidAuthorizationRememberMe"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="testItPlayforma2">
+        <parameter name="browserName" value="Chrome"/>
+        <packages>
+            <package name="tests.ui_tests"/>
+        </packages>
+        <classes>
+            <class name="tests.ui_tests.ItPlatformaTests">
+                <methods>
+                    <include name="checkAuthorization"/>
                 </methods>
             </class>
         </classes>

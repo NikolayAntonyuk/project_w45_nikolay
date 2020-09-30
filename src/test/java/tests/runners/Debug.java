@@ -1,29 +1,34 @@
 package tests.runners;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import com.codeborne.selenide.testng.ScreenShooter;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import tests.pages.BasePage;
 
-public class Debug extends BasePage {
+import java.net.MalformedURLException;
 
-    @BeforeMethod(alwaysRun = true)
-    public void setUp() {
-        Configuration.startMaximized = true;
+public class Debug extends BasePage {
+    @Parameters({"browserName"})
+    @BeforeClass
+    static public void customConfig(@Optional String browserName) throws MalformedURLException {
+        Configuration.timeout = 30000;
         Configuration.reportsFolder = "target/screenshots";
-        Configuration.timeout = 10000;
-        ScreenShooter.captureSuccessfulTests = true;
+        Configuration.browser = browserName;
+        Configuration.browserCapabilities.setCapability("enableVNC", false);
+        Configuration.browserCapabilities.setCapability("enableVideo", false);
+        //Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.startMaximized = true;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void tearDown() {
-        Selenide.closeWebDriver();
+    @AfterClass
+    public static void tearDown() {
+        WebDriverRunner.closeWebDriver();
     }
 
 }
-

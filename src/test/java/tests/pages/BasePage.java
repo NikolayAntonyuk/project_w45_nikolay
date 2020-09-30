@@ -1,5 +1,6 @@
 package tests.pages;
 
+
 import tests.pages.itplatforma.ItPlatformaAuthorization;
 import tests.pages.itplatforma.ItPlatformaMainPage;
 import tests.pages.itplatforma.ItPlatformaRegistration;

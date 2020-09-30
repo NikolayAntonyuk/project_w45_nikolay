@@ -1,4 +1,4 @@
-package tests.ui_tests.itplatforma;
+package tests.ui_tests;
 
 import org.openqa.selenium.Keys;
 import org.testng.annotations.DataProvider;
@@ -8,16 +8,15 @@ import tests.data.Projects;
 import tests.runners.Debug;
 import tests.utils.ExcelUtils;
 
+import java.io.IOException;
+
 import static com.codeborne.selenide.Selenide.open;
+import static tests.utils.SimpleExcelWriterExample.writeToExcelFile;
 
 public class ItPlatformaTests extends Debug {
 
-    @DataProvider
-    public Object[][] testObjArray1() {
-        return ExcelUtils.getTableArray("src//test//resources//TestData.xlsx", "Sheet1");
-    }
 
-    @Test(priority = 1)
+    @Test()
     public void checkRegistration() {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaRegistration.pressButtonSingIn();
@@ -32,7 +31,7 @@ public class ItPlatformaTests extends Debug {
         ItPlatformaMainPage.pressButtonSingOut("Выйти");
     }
 
-    @Test(priority = 2)
+    @Test()
     public void checkValidReg() {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaRegistration.pressButtonSingIn();
@@ -73,7 +72,7 @@ public class ItPlatformaTests extends Debug {
         ItPlatformaMainPage.pressButtonSingOut("Выйти");
     }
 
-    @Test(priority = 3)
+    @Test()
     public void checkAuthorization() {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaAuthorization.pressButtonSingIn();
@@ -85,7 +84,7 @@ public class ItPlatformaTests extends Debug {
         ItPlatformaMainPage.pressButtonSingOut("Выйти");
     }
 
-    @Test(priority = 4)
+    @Test()
     public void checkValidAuthorization() {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaAuthorization.pressButtonSingIn();
@@ -120,7 +119,7 @@ public class ItPlatformaTests extends Debug {
         ItPlatformaMainPage.pressButtonSingOut("Выйти");
     }
 
-    @Test(priority = 5)
+    @Test()
     public void checkValidAuthorizationRememberMe() {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaAuthorization.pressButtonSingIn();
@@ -156,7 +155,7 @@ public class ItPlatformaTests extends Debug {
         ItPlatformaMainPage.pressButtonSingOut("Выйти");
     }
 
-    @Test(priority = 6)
+    @Test()
     public void checkMainPageBrokenlinks() {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaMainPage.pressButtonHeader("Sign in");
@@ -191,16 +190,13 @@ public class ItPlatformaTests extends Debug {
         return ExcelUtils.getTableArray("src//test//resources//TestData.xlsx", "Sheet1");
     }
 
-    @Test(priority = 7, dataProvider = "testObjArray1")
-    public void checkMainPageTheSearch(String search1, String search2) {
+    @Test(dataProvider = "testObjArray1")
+    public void checkMainPageTheSearch(String search1, String search2) throws IOException {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaMainPage.fieldSearch( search1 + search2);
         ItPlatformaMainPage.fieldSearch(Keys.chord(Keys.ENTER));
         ItPlatformaMainPage.resultSearch();
-
-
-     //   System.out.println("var1: " + var1);
-      //  System.out.println("var2: " + var2);
+        writeToExcelFile(search1, search2);
     }
 
 
