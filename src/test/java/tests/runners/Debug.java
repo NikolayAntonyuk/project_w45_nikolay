@@ -21,7 +21,7 @@ public class Debug extends BasePage {
         Configuration.browser = browserName;
         Configuration.browserCapabilities.setCapability("enableVNC", false);
         Configuration.browserCapabilities.setCapability("enableVideo", false);
-        //Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.remote = "http://localhost:4444/wd/hub";
         Configuration.startMaximized = true;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
     }
