@@ -12,7 +12,7 @@
         <classes>
             <class name="tests.ui_tests.ItPlatformaTests">
                 <methods>
-                    <include name="checkValidAuthorizationRememberMe"/>
+                    <include name="checkValidAuthorization"/>
                 </methods>
             </class>
         </classes>
@@ -25,7 +25,7 @@
         <classes>
             <class name="tests.ui_tests.ItPlatformaTests">
                 <methods>
-                    <include name="checkAuthorization"/>
+                    <include name="checkValidAuthorization"/>
                 </methods>
             </class>
         </classes>

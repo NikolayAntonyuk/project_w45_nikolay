@@ -32,24 +32,28 @@ public class ItPlatformaRegistration {
 
     @Step
     public void fillTheFieldUser(String user) {
+        fieldUser.clear();
         fieldUser.sendKeys(user);
         logger.info(user + " - ok");
     }
 
     @Step
     public void fillTheFieldEmail(String email) {
+        fieldEmail.clear();
         fieldEmail.sendKeys(email);
         logger.info(email + " - ok");
     }
 
     @Step
     public void fillTheFieldPassword(String password) {
+        fieldPassword.clear();
         fieldPassword.sendKeys(password);
         logger.info("ok");
     }
 
     @Step
     public void fillTheFieldPassword2(String password) {
+        fieldPassword2.clear();
         fieldPassword2.sendKeys(password);
         logger.info("ok");
     }

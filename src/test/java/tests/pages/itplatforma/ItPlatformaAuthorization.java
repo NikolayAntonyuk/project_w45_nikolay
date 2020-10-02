@@ -13,7 +13,7 @@ public class ItPlatformaAuthorization {
     SelenideElement fieldUser = $(byXpath("//input[@id='user_login']"));
     SelenideElement fieldPassword = $(byXpath("//input[@id='user_pass']"));
     SelenideElement buttonLogin = $(byXpath("//button[@class='tml-button']"));
-    String  checkErrorMessege = "//li";
+    String checkErrorMessege = "//li";
     String checkErrorMessege1 = "//li[@class='tml-error']/a";
     SelenideElement checkBoxRememberMe = $(byXpath("//input[@id='rememberme']"));
 
@@ -26,11 +26,13 @@ public class ItPlatformaAuthorization {
 
     @Step
     public void fillTheFieldUser(String user) {
+        fieldUser.clear();
         fieldUser.sendKeys(user);
         logger.info(user + " - ok");
     }
     @Step
     public void fillTheFieldPassword(String password) {
+        fieldPassword.clear();
         fieldPassword.sendKeys(password);
         logger.info("ok");
     }
