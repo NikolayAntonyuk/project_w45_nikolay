@@ -154,6 +154,7 @@ public class ItPlatformaMainPage {
     @Step
     public void fieldSearch(String searchText) {
         fieldSearch.sendKeys(searchText);
+        fieldSearch.pressEnter();
         logger.info(searchText + " - ok");
     }
     @Step

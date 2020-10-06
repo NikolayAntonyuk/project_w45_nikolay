@@ -1,11 +1,10 @@
 package tests.ui_tests;
 
-import org.openqa.selenium.Keys;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.data.ItPlatformaUser;
 import tests.data.Projects;
-import tests.runners.Debug;
+import tests.runners.SelenoidRunner;
 import tests.utils.ExcelUtils;
 
 import java.io.IOException;
@@ -13,7 +12,7 @@ import java.io.IOException;
 import static com.codeborne.selenide.Selenide.open;
 import static tests.utils.SimpleExcelWriterExample.writeToExcelFile;
 
-public class ItPlatformaTests extends Debug {
+public class ItPlatformaTests extends SelenoidRunner {
 
 
     @Test()
@@ -186,7 +185,6 @@ public class ItPlatformaTests extends Debug {
     public void checkMainPageTheSearch(String search1, String search2) throws IOException {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaMainPage.fieldSearch( search1 + search2);
-        ItPlatformaMainPage.fieldSearch(Keys.chord(Keys.ENTER));
         ItPlatformaMainPage.resultSearch();
         writeToExcelFile(search1, search2);
     }
