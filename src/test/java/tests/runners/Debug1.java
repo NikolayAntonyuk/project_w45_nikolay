@@ -10,7 +10,7 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import tests.pages.BasePage;
 
-public class Debug extends BasePage {
+public class Debug1 extends BasePage {
     @Parameters({"browserName"})
     @BeforeClass
     static public void customConfig(@Optional String browserName)  {

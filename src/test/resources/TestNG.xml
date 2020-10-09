@@ -4,15 +4,15 @@
         <listener class-name="tests.listeners.CustomListener"/>
         <listener class-name="tests.listeners.RetryListener"/>
     </listeners>
-    <parameter name="browserName" value="Firefox"/>
     <test name="test.ItPlayforma1">
+        <parameter name="browserName" value="Firefox"/>
         <packages>
             <package name="tests.ui_tests"/>
         </packages>
         <classes>
             <class name="tests.ui_tests.ItPlatformaTests">
                 <methods>
-                    <exclude name="checkMainPageTheSearch"/>
+                    <include name="checkMainPageTheSearch"/>
                 </methods>
             </class>
         </classes>
