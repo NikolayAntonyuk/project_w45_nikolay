@@ -182,7 +182,7 @@ public class ItPlatformaTests extends SelenoidRunner {
         return ExcelUtils.getTableArray("src//test//resources//TestData.xlsx", "Sheet1");
     }
 
-    @Test(dataProvider = "testObjArray1")
+    @Test(dataProvider = "testObjArray")
     public void checkMainPageTheSearch(String search1, String search2) throws IOException {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaMainPage.fieldSearch(search1 + search2);
