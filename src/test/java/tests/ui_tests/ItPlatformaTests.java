@@ -4,7 +4,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.data.ItPlatformaUser;
 import tests.data.Projects;
-import tests.runners.SelenoidRunner;
+import tests.runners.Debug;
 import tests.utils.ExcelUtils;
 
 import java.io.IOException;
@@ -12,10 +12,10 @@ import java.io.IOException;
 import static com.codeborne.selenide.Selenide.open;
 import static tests.utils.SimpleExcelWriterExample.writeToExcelFile;
 
-public class ItPlatformaTests extends SelenoidRunner {
+public class ItPlatformaTests extends Debug {
 
 
-    @Test()
+    @Test(priority = 1)
     public void checkRegistration() {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaRegistration.pressButtonSingIn();
@@ -30,7 +30,7 @@ public class ItPlatformaTests extends SelenoidRunner {
         ItPlatformaMainPage.pressButtonSingOut("Выйти");
     }
 
-    @Test()
+    @Test(priority = 2)
     public void checkValidReg() {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaRegistration.pressButtonSingIn();
@@ -52,7 +52,7 @@ public class ItPlatformaTests extends SelenoidRunner {
         ItPlatformaRegistration.pressbuttonRegistration2();
         ItPlatformaRegistration.checkErrorMessage(": Please enter a password.");
         ItPlatformaRegistration.checkErrorMessage(": Этот email уже зарегистрирован. Пожалуйста, введите другой.");
-        ItPlatformaRegistration.fillTheFieldEmail(ItPlatformaUser.EMAIL2.getValue());
+        ItPlatformaRegistration.fillTheFieldEmail(ItPlatformaUser.EMAIL3.getValue());
         ItPlatformaRegistration.pressbuttonRegistration2();
         ItPlatformaRegistration.checkErrorMessage(": Некорректный адрес email.");
         ItPlatformaRegistration.checkErrorMessage(": Please enter a password.");
@@ -69,7 +69,7 @@ public class ItPlatformaTests extends SelenoidRunner {
         ItPlatformaMainPage.pressButtonSingOut("Выйти");
     }
 
-    @Test()
+    @Test(priority = 3)
     public void checkAuthorization() {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaAuthorization.pressButtonSingIn();
@@ -81,7 +81,7 @@ public class ItPlatformaTests extends SelenoidRunner {
         ItPlatformaMainPage.pressButtonSingOut("Выйти");
     }
 
-    @Test()
+    @Test(priority = 4)
     public void checkValidAuthorization() {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaAuthorization.pressButtonSingIn();
@@ -96,7 +96,7 @@ public class ItPlatformaTests extends SelenoidRunner {
         ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.USER2.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
         ItPlatformaAuthorization.checkErrorMessage1("Забыли пароль?");
-        ItPlatformaAuthorization.fillTheFieldUser(ItPlatformaUser.USER2.getValue());
+        ItPlatformaAuthorization.fillTheFieldUser(ItPlatformaUser.USER3.getValue());
         ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.PASSWORD.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
         ItPlatformaAuthorization.checkErrorMessage("Неизвестное имя пользователя. Перепроверьте или попробуйте ваш адрес email.");
@@ -116,7 +116,7 @@ public class ItPlatformaTests extends SelenoidRunner {
         ItPlatformaMainPage.pressButtonSingOut("Выйти");
     }
 
-    @Test()
+    @Test(priority = 5)
     public void checkValidAuthorizationRememberMe() {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaAuthorization.pressButtonSingIn();
@@ -129,11 +129,17 @@ public class ItPlatformaTests extends SelenoidRunner {
         ItPlatformaAuthorization.checkErrorMessage(": Вы не ввели пароль.");
         ItPlatformaAuthorization.fillTheFieldUser(ItPlatformaUser.USER.getValue());
         ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.PASSWORD.getValue());
+        ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.USER2.getValue());
+        ItPlatformaAuthorization.pressButtonLogin();
+        ItPlatformaAuthorization.checkErrorMessage1("Забыли пароль?");
+        ItPlatformaAuthorization.fillTheFieldUser(ItPlatformaUser.USER3.getValue());
+        ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.PASSWORD.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
         ItPlatformaAuthorization.checkErrorMessage("Неизвестное имя пользователя. Перепроверьте или попробуйте ваш адрес email.");
         ItPlatformaAuthorization.fillTheFieldUser(ItPlatformaUser.EMAIL.getValue());
+        ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.PASSWORD2.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
-        ItPlatformaAuthorization.checkErrorMessage(": Вы не ввели пароль.");
+        ItPlatformaAuthorization.checkErrorMessage1("Забыли пароль?");
         ItPlatformaAuthorization.fillTheFieldUser(ItPlatformaUser.USER.getValue());
         ItPlatformaAuthorization.fillTheFieldPassword(ItPlatformaUser.PASSWORD2.getValue());
         ItPlatformaAuthorization.pressButtonLogin();
@@ -146,7 +152,7 @@ public class ItPlatformaTests extends SelenoidRunner {
         ItPlatformaMainPage.pressButtonSingOut("Выйти");
     }
 
-    @Test()
+    @Test(priority = 6)
     public void checkMainPageBrokenlinks() {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaMainPage.pressButtonHeader("Sign in");
@@ -182,7 +188,7 @@ public class ItPlatformaTests extends SelenoidRunner {
         return ExcelUtils.getTableArray("src//test//resources//TestData.xlsx", "Sheet1");
     }
 
-    @Test(dataProvider = "testObjArray")
+    @Test(priority = 7, dataProvider = "testObjArray")
     public void checkMainPageTheSearch(String search1, String search2) throws IOException {
         open(Projects.ITPLATFORMA_MAIN_PAGE.getUrl());
         ItPlatformaMainPage.fieldSearch(search1 + search2);

@@ -1,12 +1,33 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="Selenoid one thread">
     <listeners>
-        <listener class-name="tests.listeners.CustomListener"/>
-        <listener class-name="tests.listeners.RetryListener"/>
     </listeners>
-    <test name="Selenoid, Chrome">
+    <test name="test.ItPlayformFirefox">
+        <parameter name="browserName" value="Firefox"/>
         <packages>
-            <package name="tests.ui_tests.ItPlatformaTests"/>
+            <package name="tests.ui_tests"/>
         </packages>
+        <classes>
+            <class name="tests.ui_tests.ItPlatformaTests">
+                <methods>
+                    <exclude name="checkValidAuthorizationRememberMe"/>
+                    <exclude name="checkMainPageTheSearch"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="testItPlayformaChrome">
+        <parameter name="browserName" value="Chrome"/>
+        <packages>
+            <package name="tests.ui_tests"/>
+        </packages>
+        <classes>
+            <class name="tests.ui_tests.ItPlatformaTests">
+                <methods>
+                    <exclude name="checkRegistration"/>
+                    <exclude name="checkValidReg"/>
+                </methods>
+            </class>
+        </classes>
     </test>
 </suite>

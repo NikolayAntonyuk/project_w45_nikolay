@@ -18,7 +18,7 @@ public class ItPlatformaMainPage {
     SelenideElement FiveElement = $(byXpath("//div[@class='mWidth topMenu']"));
     String pressNewesPage = "//a[@ ";
     SelenideElement Blog = $(byXpath("//h2[@class='single-post-title entry-title']"));
-    SelenideElement sellectElementsProfile = $(byXpath("  //li[@id='wp-admin-bar-my-account']"));
+    SelenideElement sellectElementsProfile = $(byXpath("//li[@id='wp-admin-bar-my-account']"));
     String buttonSingOut = "//a[@class='ab-item'";
     SelenideElement pressPageNumbers2 = $(byXpath("//a[@class='page-numbers']"));
     SelenideElement fieldSearch = $(byXpath("//input[@id='ocean-search-form-1']"));
