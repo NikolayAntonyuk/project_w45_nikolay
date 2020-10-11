@@ -16,10 +16,9 @@ public class Debug extends BasePage {
     static public void customConfig(@Optional String browserName)  {
         Configuration.timeout = 30000;
         Configuration.reportsFolder = "target/screenshots";
-        Configuration.browser = browserName;
-        Configuration.browserCapabilities.setCapability("enableVNC", false);
-        Configuration.browserCapabilities.setCapability("enableVideo", false);
-        //Configuration.remote = "http://localhost:4444/wd/hub";
+        if (browserName != null) {
+            Configuration.browser = browserName;
+        }
         Configuration.startMaximized = true;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
     }
